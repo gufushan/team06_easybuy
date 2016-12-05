@@ -2,12 +2,15 @@ package com.ibeifeng.shop.service;
 
 import com.ibeifeng.shop.dao.IUserDao;
 import com.ibeifeng.shop.model.User;
+import com.ibeifeng.shop.util.Pager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -60,7 +63,11 @@ public class UserService implements IUserService {
         userDao.update(user);
     }
 
-    public void add(User user,HttpSession session) {
+    public User load(int id) {
+       return userDao.load(id);
+    }
+
+    public void add(User user, HttpSession session) {
         userDao.add(user);
         Map<String,String> loginUserMap=(Map<String, String>)session.getServletContext().getAttribute("loginUM");
         if (loginUserMap==null){
@@ -71,6 +78,21 @@ public class UserService implements IUserService {
         session.getServletContext().setAttribute("loginUM",loginUserMap);
     }
 
+    /**
+     * 获取所有用户的信息
+     * @return
+     */
+    public Pager<User> pageList() {
+        String hql="from User";
+       return userDao.pageList(hql,null);
+    }
+
+    /**
+     * 获取所有用户信息的集合
+     * @return
+     */
+
+
     public String searchusername(String username){
         User user=userDao.load(username,null);
         if (user!=null){
@@ -79,6 +101,19 @@ public class UserService implements IUserService {
             return "OK";
         }
     }
+
+    public String judgeStatus(HttpSession session) {
+        User user=(User)session.getAttribute("LoginUser");
+        if (user!=null){
+            if (user.getStatus()==1){
+                return "OK";
+            }
+        }else {
+            return "false";
+        }
+        return "";
+    }
+
     @Resource
     public void setUserDao(IUserDao userDao) {
         this.userDao = userDao;

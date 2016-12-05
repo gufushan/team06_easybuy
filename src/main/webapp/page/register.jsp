@@ -25,7 +25,7 @@
             <a href="/user/register">注册</a>
         </c:if>
         <a href="guestbook.html">留言</a>
-        <a href="manage/index.html">后台管理</a>
+        <a href="manage/index.jsp">后台管理</a>
     </div>
     <div class="navbar">
         <ul class="clearfix">

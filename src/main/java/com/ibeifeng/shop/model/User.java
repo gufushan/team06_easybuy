@@ -22,6 +22,7 @@ public class User {
     private String email;
     private String phone;
     private String address;
+    //用户权限  0为普通用户  1位管理员
     private int status;
     //用户是否登陆  1为登陆  2为未登录
     private int login;

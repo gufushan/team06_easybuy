@@ -29,5 +29,7 @@
         <property name="maxUploadSize" value="1024000000"/>
     </bean>
     <!--开放静态资源-->
-    <mvc:resources mapping="/**" location="/"/>
+    <mvc:resources mapping="/resources/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/resources/images/**" location="/resources/images/"/>
+    <mvc:resources mapping="/resources/scripts/**" location="/resources/scripts/"/>
 </beans>
