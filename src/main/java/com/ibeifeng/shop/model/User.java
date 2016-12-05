@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2016/12/1.
+ * user类
  */
 @Entity
 @Table(name = "t_user")
