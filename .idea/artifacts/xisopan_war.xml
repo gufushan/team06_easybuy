@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xisopan:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="javaproject.war">
+      <element id="artifact" artifact-name="xisopan:war exploded" />
+    </root>
+  </artifact>
+</component>
